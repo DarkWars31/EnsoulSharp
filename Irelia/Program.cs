@@ -1,4 +1,4 @@
-﻿namespace EnsoulSharp.Irelia
+namespace EnsoulSharp.Irelia
 {
     using System;
     using System.Linq;
@@ -360,7 +360,7 @@
                 }
 
             }
-            if (R.IsReady() && target.IsValidTarget(R.Range))
+            if (R.IsReady() && target.IsValidTarget(R.Range) && useR)
             {
                 R.Cast(target.Position);
             }
