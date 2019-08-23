@@ -22,7 +22,7 @@ namespace EnsoulSharp.Irelia
         public static Item Titanic;
         public static Item Botrk;
         public static Item Bil;
-        public static Menu Menu, Items;
+        public static Menu Menu, Items,Rset;
         private static AIHeroClient _Player;
         private static readonly Menu MenuIrelia;
         public static Spell Q, W, E1, E2, R;
@@ -124,6 +124,9 @@ namespace EnsoulSharp.Irelia
             Items.Add(new MenuSlider("ihpp", "Enemy HP Use BOTRK <=", 50));
             MenuIrelia.Add(Items);
             //Last
+            Rset = new Menu("R Settings", "R Settings");
+            Rset.Add(new MenuSlider("healthR", "R EnemyHeroes Health", 0,0,100));
+            MenuIrelia.Add(Rset);
 
             //Ks
             var KSMenu = new Menu("killsteal", "Killsteal");
@@ -360,7 +363,9 @@ namespace EnsoulSharp.Irelia
                 }
 
             }
-            if (R.IsReady() && target.IsValidTarget(R.Range) && useR)
+
+            var Minhpp = Rset["healthR"].GetValue<MenuSlider>().Value;
+            if (R.IsReady() && target.IsValidTarget(R.Range) && useR && (target.HealthPercent < Minhpp))
             {
                 R.Cast(target.Position);
             }
@@ -400,6 +405,7 @@ namespace EnsoulSharp.Irelia
 
 
         }
+
         public static void Item()
         {
             var item = Items["BOTRK"].GetValue<MenuBool>().Enabled;
