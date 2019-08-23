@@ -88,7 +88,7 @@
             Titanic = new Item(ItemId.Titanic_Hydra, Player.Instance.GetRealAutoAttackRange());
             Botrk = new Item(ItemId.Blade_of_the_Ruined_King, 400);
             Bil = new Item(3144, 475f);
-            var MenuIrelia = new Menu("EnsoulSharp.Irelia", "EnsoulSharp.Irelia", true);
+            var MenuIrelia = new Menu("Darkwars31.Irelia", "Darkwars31.Irelia", true);
             //Combo
             var combomenu = new Menu("combo", "Combo");
             combomenu.Add(ComboIrelia.Q);
